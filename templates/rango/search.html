@@ -1,0 +1,38 @@
+{% extends "rango/base_boothstrap.html" %}
+{% load static %}
+{% block title_block %}
+    Search
+{% endblock title_block %}
+{% block body_block %}
+<div>
+    <br>
+    <h1>Search with django</h1>
+    <br>
+    <form class="form-inline" id="user_form" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" size="50" name="query" id="query">
+        </div>
+        <button class="btn btn-primary" type="submit" name="submit" value="Search">Search</button>
+    </form>
+    {% if result_list %}
+        <br>
+        <h3>Search Results for "{{ result_list.queryContext.originalQuery }}"</h3>
+        <div class="class-group">
+            {% comment %} {% for result in result_list %} {% endcomment %}
+                {% for res in result_list.webPages.value %}
+                    <a style="font-size: 23px;" href="{{res.url}}">{{ res.name|safe}}</a><br>
+                    <a style="font-size: 15px" href="{{ res.url }}">{{ res.url }}</a>
+                    <p style="font-size: 18px">{{ res.snippet|safe }}</p>
+                {%endfor%}
+                {% comment %} <div class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <a href="{{ result.link }}">{{ result.title }}</a>
+                    </h4>
+                    <p class="list-group-item-text">{{ result.summary }}</p>
+                </div> {% endcomment %}
+            {% comment %} {% endfor %} {% endcomment %}
+        </div>
+    {% endif %}
+</div>
+{% endblock body_block %}

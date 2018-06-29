@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends "rango/base_boothstrap.html" %}
+{% load static %}
+{% block title_block %}
+    Index
+{% endblock %}
+{% block body_block %}
+    <div class="jumbotron">
+        <h1 class="display-3">Rango says...</h1>
+        {% if user.is_authenticated %}
+            <b style="font-size: 30px"> hey {{ user.username }}! </b>
+            <ul>
+                {% comment %} <li><a href="/rango/restricted/">Restricted</a></li>
+                <li><a href="/rango/logout/">Logout</a></li>
+                <li><a href="/rango/add_category/">Add a new category</a></li> {% endcomment %}
+            </ul>
+        {% else %}
+            <div style="font-size: 30px">hey there partner!</div>
+            <ul>
+                {% comment %} <li><a href="/rango/register/">Register</a></li>
+                <li><a href="/rango/login/">login</a></li> {% endcomment %}
+            </ul>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Most Liked categories</h4>
+            {% if categories %}
+            <ul class="list-group">
+                {% for cat in categories %}
+                    <li class="list-group-item"><a href="/rango/category/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <strong>There are no categories present</strong>
+            {% endif %}
+        </div>
+        <div class="col-lg-6"> 
+            <h4>Most viewed pages...</h4>
+            {% if pages %}
+                <ul class="list-group">
+                    {% for page in pages %}
+                        <li class="list-group-item"><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No such pages</strong>
+            {% endif %}
+            <!-- <a href="/rango/about/">About</a><br /> -->
+        </div>
+    </div>
+    {% comment %} <img src="{% static "rango.jpg" %}" alt="Picture of Rango" /> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load staticfiles %}
+	<html>
+	<head>
+		<title>
+			Rango - 
+			{% block title_block %} 
+			How to Tango with Django!
+			{% endblock %}
+		</title>
+	</head>
+	<body>
+		
+		<div>
+			{% block body_block %}
+			{% endblock %}
+		</div>
+		<hr />
+		<div>
+			<ul>
+				<li><a href="{% url 'add_category' %}">Add a New Category</a></li>
+				<li><a href="{% url 'about' %}">About</a></li>	
+                <li><a href="{% url 'index' %}">Index</a></li>
+				<!-- <li><a href="{% url 'register' %"}>register1</a></li> -->
+				<!-- <li><a href="/rango/login/">login</a></li> -->
+				<li><a href="/rango/register/">register1</a></li>
+				<li><a href="{% url 'registration_register' %}">register2</a></li>
+				<li><a href="{% url 'auth_login' %}">login</a></li>
+				<li><a href="{% url 'auth_logout' %}">logout</a></li>
+			</ul>
+		</div>
+	</body>
+	</html>

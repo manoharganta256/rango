@@ -1,0 +1,25 @@
+{% extends "rango/base_boothstrap.html" %}
+{% load static %}
+<html>
+    {% block title_block %}
+        About
+    {% endblock %}
+    {% block body_block %}
+        <div class="jumbotron">
+            <h1 class="display-3">About Rango</h1>
+            {% if user.is_authenticated %}
+            <b style="font-size: 30px"> hey {{ user.username }}! </b>
+            <br>
+            {% endif %}
+            {% comment %} This page gives a brief description about Rango<br> {% endcomment %}
+        </div>
+        <ul>
+            <li>Still have to fill this</li>
+        </ul>
+        {% comment %} <ul>
+            <li><a href="\rango\">back</a><br></li>
+        </ul>
+        <img src="{% static "rango.jpg" %}" alt="Picture of Rango"> {% endcomment %}
+        <button class="btn btn-primary" id="about-btn">Alert</button>
+    {% endblock %}
+</html>
