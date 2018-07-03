@@ -25,8 +25,8 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 SECRET_KEY = 'b8&b@w@sykq_9)^pm0^o!qu1u#niig*##^_7hr-v78rqo+$8z)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = []
 
 
