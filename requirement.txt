@@ -6,7 +6,7 @@ Django==2.1.11
 django-registration-redux==2.4
 idna==2.7
 kiwisolver==1.0.1
-Pillow==5.1.0
+Pillow==8.1.1
 psycopg2==2.7.5
 pyparsing==2.2.0
 python-dateutil==2.7.2
